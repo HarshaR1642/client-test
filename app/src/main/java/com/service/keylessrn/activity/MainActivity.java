@@ -1,30 +1,22 @@
 package com.service.keylessrn.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.PowerManager;
 import android.os.RemoteException;
-import android.provider.Settings;
-import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.service.keylessrn.V5AidlInterface;
-import com.service.keylessrn.ResponseCallback;
-import com.service.keylessrn.model.LoginResponseModel;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.service.keylessrn.ResponseCallback;
+import com.service.keylessrn.V5AidlInterface;
+import com.service.keylessrn.model.LoginResponseModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     ServiceConnection serviceConnection;
     Handler handler;
     Runnable runnable;
-
     public static final String SERVICE_APP_PACKAGE = "com.service.keylessrn";
     public static final String SERVICE_APP_RECEIVER_CLASS = "com.service.keylessrn.receiver.Receiver";
     public static final String ACTION_DISABLE_LOCK_MODE = "android.intent.action.DISABLE_LOCK_MODE";
@@ -41,34 +32,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button = findViewById(R.id.login);
-        Button removeAppOwnerButton = findViewById(R.id.removeAppOwner);
-
-        button.setOnClickListener(this::onClick);
-        removeAppOwnerButton.setOnClickListener(this::removeAppOwner);
-
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        String packageName = "com.service.keylessrn";
-        if (!pm.isIgnoringBatteryOptimizations(packageName)) {
-            Intent intent = new Intent();
-            intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
-            intent.setData(Uri.parse("package:" + packageName));
-            startActivity(intent);
-        }
+        init();
     }
 
-    public void removeAppOwner(View view) {
+    public void removeServiceAppAsOwner(View view) {
         Intent intent = new Intent(ACTION_DISABLE_LOCK_MODE);
         intent.setComponent(new ComponentName(SERVICE_APP_PACKAGE, SERVICE_APP_RECEIVER_CLASS));
         sendBroadcast(intent);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        init();
-    }
-
+    @SuppressLint("SetTextI18n")
     public void init() {
         if (v5AidlInterface != null) {
             return;
@@ -92,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         };
         Intent intent = new Intent("com.service.keylessrn.service.ClientService");
         intent.setComponent(new ComponentName("com.service.keylessrn", "com.service.keylessrn.service.ClientService"));
-        boolean bound = bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
         handler = new Handler();
         runnable = () -> {
             if (v5AidlInterface == null) {
@@ -103,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(runnable, 5000);
     }
 
-    public void onClick(View view) {
+    public void login(View view) {
         init();
         Bundle bundle = new Bundle();
         bundle.putString("email", "harsha.m@mailinator.com");
@@ -134,5 +106,16 @@ public class MainActivity extends AppCompatActivity {
         if (handler != null) {
             handler.removeCallbacks(runnable);
         }
+    }
+
+    public void swipeButton(View view) {
+        Intent intent = new Intent(this, SwipeButtonActivity.class);
+        startActivity(intent);
+    }
+
+
+    public void thermostatSlider(View view) {
+        Intent intent = new Intent(this, ThermostatSliderActivity.class);
+        startActivity(intent);
     }
 }
