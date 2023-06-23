@@ -81,7 +81,7 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
         if (running) {
             totalSteps = sensorEvent.values[0];
 
-            Log.i("totalSteps", ""+totalSteps);
+            Log.i("totalSteps", "" + totalSteps);
 
             int currentSteps = (int) (totalSteps - previousTotalSteps);
 

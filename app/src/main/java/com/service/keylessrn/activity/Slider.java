@@ -110,7 +110,7 @@ public class Slider extends View {
 
             int _x = (int) (left + right - 90) / 2;
             int _y = (int) (top + bottom + 30) / 2;
-            canvas.drawText(""+(int) c_progress+"°F", _x, _y, thumbPaint);
+            canvas.drawText("" + (int) c_progress + "°F", _x, _y, thumbPaint);
         }
     }
 
@@ -136,7 +136,7 @@ public class Slider extends View {
 
             int _x = (int) (left + right - 90) / 2;
             int _y = (int) (top + bottom + 30) / 2;
-            canvas.drawText(""+(int) h_progress+"°F", _x, _y, thumbPaint);
+            canvas.drawText("" + (int) h_progress + "°F", _x, _y, thumbPaint);
         }
     }
 

@@ -80,9 +80,9 @@ public class EventCard extends View {
 
         int l = -450;
         int b = -300;
-        int left = centerX - 350 + l+50;
+        int left = centerX - 350 + l + 50;
         int top = centerY - 350 + b;
-        int right = centerX + 350 + l-50;
+        int right = centerX + 350 + l - 50;
         int bottom = centerY + 350 + b;
 
         paint.reset();

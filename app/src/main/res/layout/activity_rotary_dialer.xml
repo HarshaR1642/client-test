@@ -17,11 +17,11 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="30sp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp" />
 
     <com.service.keylessrn.activity.RotaryDialer
         android:id="@+id/rotaryDialer"
         android:layout_width="match_parent"
-        android:layout_height="500dp"/>
+        android:layout_height="500dp" />
 
 </LinearLayout>

@@ -157,6 +157,7 @@ public class RotaryDialer extends View {
     float initialTouchAngle = 0;
     boolean circled = false;
     String touchedNumber = "";
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -177,9 +178,9 @@ public class RotaryDialer extends View {
 
                     Rect bounds = new Rect(c_x - 75, c_y - 75, c_x + 75, c_y + 75);
                     if (bounds.contains((int) touchX, (int) touchY)) {
-                        int _n = (int) (11 - Math.floor(_angle/360 * 12));
-                        if(_n > 0 && _n < 11){
-                            if(_n == 10){
+                        int _n = (int) (11 - Math.floor(_angle / 360 * 12));
+                        if (_n > 0 && _n < 11) {
+                            if (_n == 10) {
                                 _n = 0;
                             }
                             touchedNumber = String.valueOf(_n);
@@ -196,7 +197,7 @@ public class RotaryDialer extends View {
                 touchAngle = (touchAngle + 360) % 360;
 
                 progressAngle = touchAngle - initialTouchAngle + 45;
-                if(touchAngle >= 350){
+                if (touchAngle >= 350) {
                     circled = true;
                 }
 
@@ -204,10 +205,10 @@ public class RotaryDialer extends View {
                 return true;
             case MotionEvent.ACTION_UP:
                 animateBack();
-                if(circled) {
+                if (circled) {
                     number += touchedNumber;
                 }
-                if(number.length() == 4){
+                if (number.length() == 4) {
                     // this.onPasscodeEnterListener.onPasscodeEnter(number);
                     number = "";
                 }
