@@ -118,4 +118,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ThermostatSliderActivity.class);
         startActivity(intent);
     }
+
+    public void stepCounter(View view) {
+        Intent intent = new Intent(this, StepCounter.class);
+        startActivity(intent);
+    }
+
+    public void eventCard(View view) {
+        Intent intent = new Intent(this, EventCardActivity.class);
+        startActivity(intent);
+    }
+
+    public void rotaryDialer(View view) {
+        Intent intent = new Intent(this, RotaryDialerActivity.class);
+        startActivity(intent);
+    }
 }

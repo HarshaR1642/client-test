@@ -4,6 +4,7 @@
     package="com.service.keylessrn.activity">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
     <queries>
         <package android:name="com.service.keylessrn" />
@@ -19,11 +20,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Client">
         <activity
+            android:name=".RotaryDialerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventCardActivity"
+            android:exported="false" />
+        <activity
             android:name=".ThermostatSliderActivity"
             android:exported="false" />
         <activity
             android:name=".SwipeButtonActivity"
             android:exported="false" />
+        <activity android:name=".StepCounter" />
         <activity
             android:name=".MainActivity"
             android:enabled="true"
