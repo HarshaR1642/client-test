@@ -13,10 +13,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-interface OnPasscodeEnterListener {
-    void onPasscodeEnter(String passcode);
-}
-
 public class RotaryDialer extends View {
     private float width;
     private float height;
@@ -32,18 +28,12 @@ public class RotaryDialer extends View {
     private final Path clipPath;
     private float progressAngle = 45;
     String number = "";
-    public OnPasscodeEnterListener onPasscodeEnterListener;
-
     public RotaryDialer(Context context, AttributeSet attributeSet) {
         super(context);
 
         paint = new Paint();
         numberPaint = new Paint();
         clipPath = new Path();
-    }
-
-    public void setOnPasscodeEnterListener(OnPasscodeEnterListener listener) {
-        this.onPasscodeEnterListener = listener;
     }
 
     @Override

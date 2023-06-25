@@ -23,7 +23,7 @@
             android:name=".RotaryDialerActivity"
             android:exported="false" />
         <activity
-            android:name=".EventCardActivity"
+            android:name=".TrainingActivity"
             android:exported="false" />
         <activity
             android:name=".ThermostatSliderActivity"

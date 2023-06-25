@@ -2,6 +2,7 @@ package com.service.keylessrn.activity;
 
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -63,8 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 v5AidlInterface = null;
             }
         };
-        Intent intent = new Intent("com.service.keylessrn.service.ClientService");
+        Intent intent = new Intent();
         intent.setComponent(new ComponentName("com.service.keylessrn", "com.service.keylessrn.service.ClientService"));
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
         handler = new Handler();
         runnable = () -> {
             if (v5AidlInterface == null) {
@@ -113,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void thermostatSlider(View view) {
         Intent intent = new Intent(this, ThermostatSliderActivity.class);
         startActivity(intent);
@@ -124,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void eventCard(View view) {
-        Intent intent = new Intent(this, EventCardActivity.class);
+    public void trainingButton(View view) {
+        Intent intent = new Intent(this, TrainingActivity.class);
         startActivity(intent);
     }
 

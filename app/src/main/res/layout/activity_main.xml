@@ -64,11 +64,11 @@
         android:onClick="rotaryDialer" />
 
     <Button
-        android:id="@+id/eventCard"
+        android:id="@+id/trainingButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="EVENT CARD"
+        android:text="TRAINING"
         android:layout_margin="10dp"
-        android:onClick="eventCard" />
+        android:onClick="trainingButton" />
 
 </LinearLayout>
