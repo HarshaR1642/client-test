@@ -23,7 +23,9 @@ public class MainApplication extends Application implements ErrorBoundary {
         try {
             Looper.loop();
         } catch (Throwable t) {
-            uncaughtException(Looper.getMainLooper().getThread(), t);
+            if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) {
+                uncaughtException(Looper.getMainLooper().getThread(), t);
+            }
         }
     }
 
