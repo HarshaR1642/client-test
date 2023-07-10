@@ -5,14 +5,19 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.service.keylessrn.ResponseCallback;
@@ -28,12 +33,16 @@ public class MainActivity extends AppCompatActivity {
     public static final String SERVICE_APP_PACKAGE = "com.service.keylessrn";
     public static final String SERVICE_APP_RECEIVER_CLASS = "com.service.keylessrn.receiver.Receiver";
     public static final String ACTION_DISABLE_LOCK_MODE = "android.intent.action.DISABLE_LOCK_MODE";
+    LinearLayout settingsLayout;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+        // findViewById(R.id.activity_main).setOnTouchListener(this::onTouch);
+        settingsLayout = findViewById(R.id.settingsLayout);
     }
 
     public void removeServiceAppAsOwner(View view) {
@@ -133,5 +142,33 @@ public class MainActivity extends AppCompatActivity {
     public void rotaryDialer(View view) {
         Intent intent = new Intent(this, RotaryDialerActivity.class);
         startActivity(intent);
+    }
+
+    float initialTouchY = 0;
+    float initialHeight = 0;
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float Y = event.getY();
+        int action = event.getAction();
+
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                initialTouchY = Y;
+                initialHeight = settingsLayout.getLayoutParams().height;
+                return true;
+            case MotionEvent.ACTION_MOVE:
+                adjustViewHeight(initialHeight + (Y - initialTouchY));
+                return true;
+            case MotionEvent.ACTION_UP:
+                return true;
+        }
+        return true;
+    }
+
+    private void adjustViewHeight(float deltaY) {
+        ViewGroup.LayoutParams layoutParams = settingsLayout.getLayoutParams();
+        layoutParams.height = Math.max((int) deltaY, 0);
+        settingsLayout.setLayoutParams(layoutParams);
     }
 }
