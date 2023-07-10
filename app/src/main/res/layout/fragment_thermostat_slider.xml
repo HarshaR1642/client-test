@@ -2,28 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/thermostat_gradient_background"
     android:gravity="center"
-    android:orientation="vertical"
-    android:background="@drawable/thermostat_gradient_background">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp">
 
-        <com.service.keylessrn.activity.Slider
+        <com.service.keylessrn.components.Slider
             android:id="@+id/arcSlider"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:progress="50"
-            android:elevation="1dp" />
+            android:elevation="1dp"
+            android:progress="50" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/scale"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="110dp"
-            android:layout_centerHorizontal="true" />
+            android:background="@drawable/scale" />
 
     </RelativeLayout>
 
@@ -33,7 +33,7 @@
         android:background="#F3FAFF"
         android:orientation="vertical">
 
-        <com.service.keylessrn.activity.SwipeButton
+        <com.service.keylessrn.components.SwipeButton
             android:id="@+id/swipeButtonActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

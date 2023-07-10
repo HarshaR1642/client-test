@@ -9,8 +9,6 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.service.keylessrn.utility.Utility;
-
 public class AutoBrightnessIcon extends View {
 
     Paint paint;

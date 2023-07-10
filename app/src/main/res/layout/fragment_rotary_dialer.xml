@@ -3,25 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RotaryDialerActivity"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:gravity="center">
+    tools:context="com.service.keylessrn.fragment.RotaryDialerFragment">
 
     <TextView
         android:id="@+id/passcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1234"
         android:layout_gravity="center"
+        android:layout_marginTop="50dp"
         android:gravity="center"
-        android:textStyle="bold"
+        android:text="1234"
         android:textSize="30sp"
-        android:layout_marginTop="50dp" />
+        android:textStyle="bold" />
 
-    <com.service.keylessrn.activity.RotaryDialer
+    <com.service.keylessrn.components.RotaryDialer
         android:id="@+id/rotaryDialer"
         android:layout_width="match_parent"
-        android:layout_height="500dp" />
+        android:layout_height="500dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

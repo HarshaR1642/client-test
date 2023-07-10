@@ -1,87 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
-    android:id="@+id/activity_main">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/settingsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        layout="@layout/settings_layout" />
-
-    <LinearLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/connectionStatusText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Connecting..."
-            android:layout_marginTop="30dp"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/login"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="LOGIN"
-            android:layout_margin="10dp"
-            android:onClick="login" />
-
-        <Button
-            android:id="@+id/removeClientAsAppOwner"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="REMOVE APP OWNER"
-            android:layout_margin="10dp"
-            android:onClick="removeServiceAppAsOwner" />
-
-        <Button
-            android:id="@+id/swipeButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="SWIPE BUTTON"
-            android:layout_margin="10dp"
-            android:onClick="swipeButton" />
-
-        <Button
-            android:id="@+id/thermostatSliderButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="THERMOSTAT SLIDER"
-            android:layout_margin="10dp"
-            android:onClick="thermostatSlider" />
-
-        <Button
-            android:id="@+id/stepCounterButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="STEP COUNTER"
-            android:layout_margin="10dp"
-            android:onClick="stepCounter" />
-
-        <Button
-            android:id="@+id/rotaryDialerButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="ROTART DIALER"
-            android:layout_margin="10dp"
-            android:onClick="rotaryDialer" />
-
-        <Button
-            android:id="@+id/trainingButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="TRAINING"
-            android:layout_margin="10dp"
-            android:onClick="trainingButton" />
-    </LinearLayout>
-
-</RelativeLayout>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigation_main" />
+</FrameLayout>

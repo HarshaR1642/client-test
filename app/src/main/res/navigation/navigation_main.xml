@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.service.keylessrn.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_rotaryDialerFragment"
+            app:destination="@id/rotaryDialerFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_stepsFragment"
+            app:destination="@id/stepsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_thermostatSliderFragment"
+            app:destination="@id/thermostatSliderFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_swipeButtonFragment"
+            app:destination="@id/swipeButtonFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="com.service.keylessrn.fragment.TrainingFragment"
+        android:label="fragment_training"
+        tools:layout="@layout/fragment_training" />
+    <fragment
+        android:id="@+id/rotaryDialerFragment"
+        android:name="com.service.keylessrn.fragment.RotaryDialerFragment"
+        android:label="fragment_rotary_dialer"
+        tools:layout="@layout/fragment_rotary_dialer" />
+    <fragment
+        android:id="@+id/stepsFragment"
+        android:name="com.service.keylessrn.fragment.StepsFragment"
+        android:label="fragment_steps"
+        tools:layout="@layout/fragment_steps" />
+    <fragment
+        android:id="@+id/thermostatSliderFragment"
+        android:name="com.service.keylessrn.fragment.ThermostatSliderFragment"
+        android:label="fragment_thermostat_slider"
+        tools:layout="@layout/fragment_thermostat_slider" />
+    <fragment
+        android:id="@+id/swipeButtonFragment"
+        android:name="com.service.keylessrn.fragment.SwipeButtonFragment"
+        android:label="fragment_swipe_button"
+        tools:layout="@layout/fragment_swipe_button" />
+</navigation>

@@ -1,4 +1,4 @@
-package com.service.keylessrn.activity;
+package com.service.keylessrn.components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
+import com.service.keylessrn.activity.R;
 import com.service.keylessrn.utility.Utility;
 
 public class Slider extends View {

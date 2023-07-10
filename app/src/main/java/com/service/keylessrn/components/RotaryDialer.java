@@ -1,4 +1,4 @@
-package com.service.keylessrn.activity;
+package com.service.keylessrn.components;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
@@ -28,6 +28,7 @@ public class RotaryDialer extends View {
     private final Path clipPath;
     private float progressAngle = 45;
     String number = "";
+
     public RotaryDialer(Context context, AttributeSet attributeSet) {
         super(context);
 

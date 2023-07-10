@@ -1,4 +1,4 @@
-package com.service.keylessrn.activity;
+package com.service.keylessrn.components;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -44,7 +44,7 @@ public class Clock extends View {
         // drawStar();
     }
 
-    private void drawStar(){
+    private void drawStar() {
         int x = centerX + 400;
         int y = centerY - 200;
 
@@ -52,16 +52,16 @@ public class Clock extends View {
         canvas.drawCircle(x, y, 150, paint);
 
         paint.setColor(Color.RED);
-        canvas.drawPoint(x-45, y-100, paint);
+        canvas.drawPoint(x - 45, y - 100, paint);
 
         paint.setColor(Color.BLUE);
-        canvas.drawPoint(x-200, y+25, paint);
+        canvas.drawPoint(x - 200, y + 25, paint);
         paint.setColor(Color.BLACK);
 
         Path starPath = new Path();
         starPath.moveTo(x, y);
         starPath.lineTo(x - 50, y - 100);
-        starPath.lineTo(x-200, y+25);
+        starPath.lineTo(x - 200, y + 25);
 
         starPath.close();
 

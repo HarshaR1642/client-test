@@ -1,4 +1,4 @@
-package com.service.keylessrn.activity;
+package com.service.keylessrn.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,13 +8,19 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-public class StepCounter extends AppCompatActivity implements SensorEventListener {
+import com.service.keylessrn.activity.R;
+
+public class StepsFragment extends Fragment implements SensorEventListener {
     private SensorManager sensorManager;
 
     private boolean running = false;
@@ -23,34 +29,51 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
 
     private float previousTotalSteps = 0f;
 
+    public StepsFragment() {
+    }
+
+    public static StepsFragment newInstance() {
+        return new StepsFragment();
+    }
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_steps);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_steps, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         loadData();
         resetSteps();
 
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         running = true;
 
         Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
 
         if (stepSensor == null) {
-            Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "No sensor detected on this device", Toast.LENGTH_SHORT).show();
         } else {
             sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
         }
     }
 
     private void resetSteps() {
-        TextView tv_stepsTaken = findViewById(R.id.tv_stepsTaken);
-        tv_stepsTaken.setOnClickListener(view -> Toast.makeText(getApplicationContext(), "Long tap to reset steps", Toast.LENGTH_SHORT).show());
+        TextView tv_stepsTaken = requireView().findViewById(R.id.tv_stepsTaken);
+        tv_stepsTaken.setOnClickListener(view -> Toast.makeText(getContext(), "Long tap to reset steps", Toast.LENGTH_SHORT).show());
 
         tv_stepsTaken.setOnClickListener(view -> {
             previousTotalSteps = totalSteps;
@@ -62,21 +85,21 @@ public class StepCounter extends AppCompatActivity implements SensorEventListene
     }
 
     private void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putFloat("key1", previousTotalSteps);
         editor.apply();
     }
 
     private void loadData() {
-        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
 
         previousTotalSteps = sharedPreferences.getFloat("key1", 0f);
     }
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        TextView tv_stepsTaken = findViewById(R.id.tv_stepsTaken);
+        TextView tv_stepsTaken = requireView().findViewById(R.id.tv_stepsTaken);
 
         if (running) {
             totalSteps = sensorEvent.values[0];

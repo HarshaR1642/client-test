@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.service.keylessrn.activity">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,20 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Client">
         <activity
-            android:name=".RotaryDialerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TrainingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ThermostatSliderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SwipeButtonActivity"
-            android:exported="false" />
-        <activity android:name=".StepCounter" />
-        <activity
-            android:name=".MainActivity"
+            android:name="com.service.keylessrn.MainActivity"
             android:enabled="true"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

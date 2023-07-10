@@ -3,18 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SwipeButtonActivity"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".SwipeButtonActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
         android:text="Swipe Button Test"
-        android:textSize="22sp"
-        android:layout_marginBottom="100dp" />
+        android:textSize="22sp" />
 
-    <com.service.keylessrn.activity.SwipeButton
+    <com.service.keylessrn.components.SwipeButton
         android:id="@+id/swipeButtonActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

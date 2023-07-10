@@ -1,4 +1,4 @@
-package com.service.keylessrn.activity;
+package com.service.keylessrn.components;
 
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.service.keylessrn.activity.R;
 
 interface SwipeToLockListener {
     void onSwipeToLock();
@@ -95,7 +96,9 @@ public class SwipeButton extends FrameLayout {
                 float _x = event.getRawX() + L_dX;
                 if (_x > ((swipeLayout.getWidth() - 2 * swipeLeft.getWidth()) * 0.7)) {
                     startAndHideRipple();
-                    this.swipeToLockListener.onSwipeToLock();
+                    if (this.swipeToLockListener != null) {
+                        this.swipeToLockListener.onSwipeToLock();
+                    }
                 }
                 lockAnimationView.setVisibility(View.GONE);
                 final ValueAnimator positionAnimator =
@@ -141,7 +144,9 @@ public class SwipeButton extends FrameLayout {
                 float _x = event.getRawX() + R_dX;
                 if (_x < (swipeLeft.getWidth()) * 1.3) {
                     startAndHideRipple();
-                    this.swipeToUnlockListener.onSwipeToUnlock();
+                    if (this.swipeToUnlockListener != null) {
+                        this.swipeToUnlockListener.onSwipeToUnlock();
+                    }
                 }
 
                 unlockAnimationView.setVisibility(View.GONE);
