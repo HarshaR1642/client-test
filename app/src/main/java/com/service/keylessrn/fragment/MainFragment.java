@@ -190,7 +190,7 @@ public class MainFragment extends Fragment implements View.OnTouchListener {
             this.navController.navigate(MainFragmentDirections.actionMainFragmentToRotaryDialerFragment());
         }
 
-        public void trainingButton(View view) {
+        public void cubeButton(View view) {
             this.navController.navigate(MainFragmentDirections.actionMainFragmentToTrainingFragment());
         }
     }
