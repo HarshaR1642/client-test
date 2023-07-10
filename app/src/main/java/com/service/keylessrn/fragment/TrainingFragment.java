@@ -10,13 +10,6 @@ import androidx.fragment.app.Fragment;
 import com.service.keylessrn.activity.R;
 
 public class TrainingFragment extends Fragment {
-    public TrainingFragment() {
-    }
-
-    public static TrainingFragment newInstance() {
-        return new TrainingFragment();
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

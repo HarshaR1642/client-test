@@ -44,14 +44,6 @@ public class MainFragment extends Fragment implements View.OnTouchListener {
     NavController navController;
     float initialTouchY = 0;
     float initialHeight = 0;
-
-    public MainFragment() {
-    }
-
-    public static MainFragment newInstance() {
-        return new MainFragment();
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

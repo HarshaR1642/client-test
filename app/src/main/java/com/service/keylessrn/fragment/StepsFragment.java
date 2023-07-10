@@ -28,14 +28,6 @@ public class StepsFragment extends Fragment implements SensorEventListener {
     private float totalSteps = 0f;
 
     private float previousTotalSteps = 0f;
-
-    public StepsFragment() {
-    }
-
-    public static StepsFragment newInstance() {
-        return new StepsFragment();
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

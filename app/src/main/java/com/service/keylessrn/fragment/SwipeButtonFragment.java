@@ -10,13 +10,6 @@ import androidx.fragment.app.Fragment;
 import com.service.keylessrn.activity.R;
 
 public class SwipeButtonFragment extends Fragment {
-    public SwipeButtonFragment() {
-    }
-
-    public static SwipeButtonFragment newInstance(String param1, String param2) {
-        return new SwipeButtonFragment();
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
